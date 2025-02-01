@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                // or a target that fits your needs
+    "module": "ESNext",                // preserves ES module syntax
+    "declaration": true,               // generates .d.ts files
+    "outDir": "dist",                  // output folder
+    "rootDir": "src",                  // source folder
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "tests"]
+}
