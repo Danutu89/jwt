@@ -1,5 +1,4 @@
-import { encode } from "../auth/algorithm";
-import { decode } from "./algorithm";
+import { decode, encode } from "./algorithm";
 export function encodeSession(secretKey, partialSession, algorithm) {
     const issued = Date.now();
     const fifteenMinutesInMs = 15 * 60 * 1000;
