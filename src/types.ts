@@ -1,4 +1,4 @@
-namespace JWT {
+export namespace JWT {
   export interface User {
     id: number;
     dateCreated: number;

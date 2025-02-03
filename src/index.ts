@@ -1,6 +1,6 @@
 import * as web from './web/index';
 import * as node from './auth/index';
-import type { PartialSession } from './types';
+import type { PartialSession } from './types'
 
 export const algorithmMap = {
   HS256: { name: 'HMAC', hash: 'SHA-256' },

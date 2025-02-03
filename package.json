@@ -1,6 +1,6 @@
 {
   "name": "jwty",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -40,25 +40,29 @@
     "vitest": "^3.0.4"
   },
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./auth": {
+    "auth": {
       "import": "./dist/auth/index.js",
       "types": "./dist/auth/index.d.ts"
     },
-    "./auth/algorithm": {
+    "auth/algorithm": {
       "import": "./dist/auth/algorithm.js",
       "types": "./dist/auth/algorithm.d.ts"
     },
-    "./web": {
+    "types": {
+      "import": "./dist/types.js",
+      "types": "./dist/types.d.ts"
+    },
+    "web": {
       "import": "./dist/web/index.js",
       "types": "./dist/web/index.d.ts"
     },
-    "./web/algorithm": {
+    "web/algorithm": {
       "import": "./dist/web/algorithm.js",
       "types": "./dist/web/algorithm.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   }
 }

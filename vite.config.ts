@@ -26,6 +26,8 @@ export default defineConfig({
     // Generate .d.ts declaration files
     dts({
       insertTypesEntry: true,
+      include: ['src'],
+      copyDtsFiles: true
     }),
   ],
   // Vitest configuration
