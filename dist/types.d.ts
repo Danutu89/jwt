@@ -30,13 +30,7 @@ export interface EncodeResult {
     issued: number;
 }
 export type DecodeResult = {
-    type: 'valid';
-    session: JWT.Session;
-} | {
-    type: 'integrity-error';
-} | {
-    type: 'invalid-token';
-} | {
-    type: 'expired';
+    type: 'valid' | 'integrity-error' | 'invalid-token' | 'expired';
+    session: JWT.Session | undefined;
 };
 export type ExpirationStatus = 'expired' | 'active' | 'grace';

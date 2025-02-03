@@ -1,6 +1,6 @@
-import * as web from './web/index';
-import * as node from './auth/index';
-import type { PartialSession } from './types'
+import * as web from './web/index.js';
+import * as node from './auth/index.js';
+import type { PartialSession } from './types.js'
 
 export const algorithmMap = {
   HS256: { name: 'HMAC', hash: 'SHA-256' },
@@ -42,5 +42,5 @@ export function encodeSession(
 ) {
   if (typeof window === 'undefined')
     return node.encodeSession(secretKey, partialSession, algorithm);
-  return web.encodeSession(secretKey, partialSession, algorithm);
+  throw new Error('Not implemented');
 }

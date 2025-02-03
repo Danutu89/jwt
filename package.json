@@ -1,9 +1,8 @@
 {
   "name": "jwty",
-  "version": "0.0.4",
+  "version": "0.0.10",
   "description": "",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
@@ -13,8 +12,11 @@
     "postbuild": "node scripts/prepare.js",
     "prepublish": "pnpm run test"
   },
+  "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "package.json",
+    "README.md"
   ],
   "keywords": [
     "jwt"
@@ -38,6 +40,28 @@
     "vite": "^4.0.0",
     "vite-plugin-dts": "^1.0.0",
     "vitest": "^3.0.4"
+  },
+  "typesVersions": {
+    ">4.0": {
+      ".": [
+        "dist/index.d.ts"
+      ],
+      "./auth": [
+        "dist/auth/index.d.ts"
+      ],
+      "./types": [
+        "dist/types.d.ts"
+      ],
+      "./web": [
+        "dist/web/index.d.ts"
+      ],
+      "./web/algorithm": [
+        "dist/web/algorithm.d.ts"
+      ],
+      "./auth/algorithm": [
+        "dist/auth/algorithm.d.ts"
+      ]
+    }
   },
   "exports": {
     "./auth": {

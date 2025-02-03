@@ -32,19 +32,10 @@ export interface EncodeResult {
   issued: number;
 }
 
-export type DecodeResult =
-  | {
-      type: 'valid';
-      session: JWT.Session;
+export type DecodeResult = {
+      type: 'valid' | 'integrity-error' | 'invalid-token' | 'expired';
+      session: JWT.Session | undefined;
     }
-  | {
-      type: 'integrity-error';
-    }
-  | {
-      type: 'invalid-token';
-    }
-  | {
-      type: 'expired';
-    };
+ ;
 
 export type ExpirationStatus = 'expired' | 'active' | 'grace';

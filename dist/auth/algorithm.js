@@ -2,7 +2,7 @@
  * module dependencies
  */
 import * as crypto from "crypto";
-import { algorithmMap, typeMap } from "../index";
+import { algorithmMap, typeMap } from "../index.js";
 /**
  * Decode jwt
  *
@@ -16,12 +16,12 @@ import { algorithmMap, typeMap } from "../index";
 const decode = (token, key, noVerify, algorithm) => {
     // check token
     if (!token) {
-        return { 'type': 'invalid-token' };
+        return { 'type': 'invalid-token', session: undefined };
     }
     // check segments
     const segments = token.split(".");
     if (segments.length !== 3) {
-        return { type: 'invalid-token' };
+        return { type: 'invalid-token', session: undefined };
     }
     // All segment should be base64
     const headerSeg = segments[0];
@@ -45,15 +45,15 @@ const decode = (token, key, noVerify, algorithm) => {
         // verify signature. `sign` will return base64 string.
         const signingInput = [headerSeg, payloadSeg].join(".");
         if (!verify(signingInput, key, signingMethod, signingType, signatureSeg)) {
-            return { type: 'integrity-error' };
+            return { type: 'integrity-error', session: undefined };
         }
         // Support for nbf and exp claims.
         // According to the RFC, they should be in seconds.
         if (payload.nbf && Date.now() < payload.nbf * 1000) {
-            return { type: 'invalid-token' };
+            return { type: 'invalid-token', session: undefined };
         }
         if (payload.exp && Date.now() > payload.exp * 1000) {
-            return { type: 'invalid-token' };
+            return { type: 'invalid-token', session: undefined };
         }
     }
     return {

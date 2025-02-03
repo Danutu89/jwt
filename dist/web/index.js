@@ -1,19 +1,4 @@
-import { decode, encode } from "./algorithm";
-export function encodeSession(secretKey, partialSession, algorithm) {
-    const issued = Date.now();
-    const fifteenMinutesInMs = 15 * 60 * 1000;
-    const expires = issued + fifteenMinutesInMs;
-    const session = {
-        ...partialSession,
-        orig_at: issued,
-        exp: expires
-    };
-    return {
-        token: encode(session, secretKey, algorithm),
-        issued: issued,
-        expires: expires
-    };
-}
+import { decode } from "./algorithm.js";
 export async function decodeSession(secretKey, tokenString, noVerify = false, algorithm) {
     return await decode(tokenString, secretKey, noVerify, algorithm);
 }

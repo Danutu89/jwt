@@ -1,4 +1,4 @@
-import type { PartialSession } from './types';
+import type { PartialSession } from './types.js';
 export declare const algorithmMap: {
     HS256: {
         name: string;
@@ -43,5 +43,5 @@ export declare const typeMap: {
     SHA384: string;
     SHA512: string;
 };
-export declare function decodeSession(secretKey: string, tokenString: string, noVerify?: boolean, algorithm?: keyof typeof algorithmMap): import("./types").DecodeResult | Promise<import("./types").DecodeResult>;
-export declare function encodeSession(secretKey: string, partialSession: PartialSession, algorithm: keyof typeof algorithmMap): import("./types").EncodeResult;
+export declare function decodeSession(secretKey: string, tokenString: string, noVerify?: boolean, algorithm?: keyof typeof algorithmMap): import("./types.js").DecodeResult | Promise<import("./types.js").DecodeResult>;
+export declare function encodeSession(secretKey: string, partialSession: PartialSession, algorithm: keyof typeof algorithmMap): import("./types.js").EncodeResult;

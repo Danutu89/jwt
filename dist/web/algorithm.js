@@ -1,4 +1,4 @@
-import { algorithmMap, typeMap } from "../index";
+import { algorithmMap, typeMap } from "../index.js";
 async function verify(input, key, method, type, signature) {
     if (!input || !key || !method || !type || !signature) {
         return false;
@@ -92,11 +92,11 @@ function base64urlEscape(str) {
 const decode = async (token, key, noVerify, algorithm) => {
     // check token
     if (!token) {
-        return { type: 'invalid-token' };
+        return { type: 'invalid-token', session: undefined };
     }
     const segments = token.split(".");
     if (segments.length !== 3) {
-        return { type: 'invalid-token' };
+        return { type: 'invalid-token', session: undefined };
     }
     const [headerSeg, payloadSeg, signatureSeg] = segments;
     try {

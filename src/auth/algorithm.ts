@@ -2,8 +2,8 @@
  * module dependencies
  */
 import * as crypto from "crypto";
-import type { DecodeResult } from "../types";
-import  { algorithmMap, typeMap } from "../index";
+import type { DecodeResult } from "../types.js";
+import  { algorithmMap, typeMap } from "../index.js";
 
 
 /**
@@ -24,12 +24,12 @@ const decode = (
 ): DecodeResult => {
 	// check token
 	if (!token) {
-        return {'type': 'invalid-token'}
+        return {'type': 'invalid-token', session: undefined}
 	}
 	// check segments
 	const segments = token.split(".");
 	if (segments.length !== 3) {
-        return {type: 'invalid-token'}
+        return {type: 'invalid-token', session: undefined}
 	}
 
 	// All segment should be base64
@@ -57,17 +57,17 @@ const decode = (
 		// verify signature. `sign` will return base64 string.
 		const signingInput = [headerSeg, payloadSeg].join(".");
 		if (!verify(signingInput, key, signingMethod, signingType, signatureSeg)) {
-            return {type: 'integrity-error'};
+            return {type: 'integrity-error', session: undefined};
 		}
 
 		// Support for nbf and exp claims.
 		// According to the RFC, they should be in seconds.
 		if (payload.nbf && Date.now() < payload.nbf * 1000) {
-            return {type: 'invalid-token'};
+            return {type: 'invalid-token', session: undefined};
 		}
 
 		if (payload.exp && Date.now() > payload.exp * 1000) {
-            return {type: 'invalid-token'};
+            return {type: 'invalid-token', session: undefined};
 		}
 	}
 

@@ -4,9 +4,9 @@ import type {
     JWT,
     DecodeResult,
     ExpirationStatus
-} from '../types';
-import { encode, decode } from './algorithm';
-import  { algorithmMap } from "../index";
+} from '../types.js';
+import { encode, decode } from './algorithm.js';
+import  { algorithmMap } from "../index.js";
 
 export function encodeSession(secretKey: string, partialSession: PartialSession, algorithm: keyof typeof algorithmMap): EncodeResult {
     const issued = Date.now();

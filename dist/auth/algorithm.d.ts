@@ -1,5 +1,5 @@
-import type { DecodeResult } from "../types";
-import { algorithmMap } from "../index";
+import type { DecodeResult } from "../types.js";
+import { algorithmMap } from "../index.js";
 /**
  * Decode jwt
  *

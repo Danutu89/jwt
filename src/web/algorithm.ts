@@ -1,8 +1,8 @@
 /**
  * module dependencies
  */
-import type { DecodeResult} from "../types";
-import  { algorithmMap, typeMap } from "../index";
+import type { DecodeResult} from "../types.js";
+import  { algorithmMap, typeMap } from "../index.js";
 
 
 async function verify(input: string, key: string, method: keyof typeof algorithmMap, type: string, signature: string) {
@@ -157,12 +157,12 @@ const decode = async (
 ): Promise<DecodeResult> => {
     // check token
     if (!token) {
-        return {type: 'invalid-token'}
+        return {type: 'invalid-token', session: undefined}
     }
 
     const segments = token.split(".");
     if (segments.length !== 3) {
-        return {type: 'invalid-token'}
+        return {type: 'invalid-token', session: undefined}
     }
 
     const [headerSeg, payloadSeg, signatureSeg] = segments;

@@ -1,4 +1,4 @@
-import { encode, decode } from './algorithm';
+import { encode, decode } from './algorithm.js';
 export function encodeSession(secretKey, partialSession, algorithm) {
     const issued = Date.now();
     const fifteenMinutesInMs = 15 * 60 * 1000;

@@ -9,9 +9,8 @@
  *
  * Run this script after building your TypeScript code with tsc.
  */
-
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const projectRoot = process.cwd();
 const distDir = path.join(projectRoot, 'dist');
@@ -65,14 +64,14 @@ function generateExports(dir, prefix = '.') {
         if (dtsPath) {
           exportEntry.types = dtsPath;
         }
-        exportsMap[relativeExportPath] = exportEntry;
+        exportsMap[`./${relativeExportPath}`] = exportEntry;
       }
       // Recursively add nested exports.
       const nestedExports = generateExports(entryPath, path.join(prefix, entry.name));
       exportsMap = { ...exportsMap, ...nestedExports };
     } else if (entry.isFile() && entry.name.endsWith('.js') && entry.name !== 'index.js') {
       // Remove the .js extension for the export key.
-      const key = relativeExportPath.slice(0, -3);
+      const key = `./${relativeExportPath.slice(0, -3)}`;
       const exportEntry = {
         import: `./${path.relative(projectRoot, entryPath).replace(/\\/g, '/')}`,
       };

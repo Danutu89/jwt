@@ -1,5 +1,5 @@
-import * as web from './web/index';
-import * as node from './auth/index';
+import * as web from './web/index.js';
+import * as node from './auth/index.js';
 export const algorithmMap = {
     HS256: { name: 'HMAC', hash: 'SHA-256' },
     HS384: { name: 'HMAC', hash: 'SHA-384' },
@@ -28,5 +28,5 @@ export function decodeSession(secretKey, tokenString, noVerify = false, algorith
 export function encodeSession(secretKey, partialSession, algorithm) {
     if (typeof window === 'undefined')
         return node.encodeSession(secretKey, partialSession, algorithm);
-    return web.encodeSession(secretKey, partialSession, algorithm);
+    throw new Error('Not implemented');
 }
